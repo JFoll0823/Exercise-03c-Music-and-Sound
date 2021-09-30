@@ -10,6 +10,7 @@ export (int) var offset
 # Timers
 var piece = null
 var new_position = Vector2(0,0)
+var sound_2 = null
 
 # Piece Stuff
 var possible_pieces = [
@@ -69,6 +70,10 @@ func generate_pieces():
 			add_child(piece)
 			piece.generate(Vector2(xStart + i * offset, yStart - j * offset))
 			all_pieces[i][j] = piece
+	if sound_2 == null:
+		sound_2 = get_node_or_null("/root/Game/2")
+	if sound_2 != null:
+		sound_2.play()
 
 func check_for_matches(column, row, color):
 	#Check Left
